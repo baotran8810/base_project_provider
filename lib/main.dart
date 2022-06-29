@@ -27,6 +27,6 @@ void executeMain(AppConfig config) async {
     WidgetsFlutterBinding.ensureInitialized();
 
     setupLocator();
-    runApp(PokerageApp(config));
+    // runApp(PokerageApp(config));
   }, (error, stack) {});
 }
