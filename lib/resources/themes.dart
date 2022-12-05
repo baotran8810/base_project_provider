@@ -1,6 +1,7 @@
 import 'package:base_project_provider/resources/color_scheme.dart';
 import 'package:base_project_provider/resources/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppThemeData {
   final Brightness brightness;
@@ -25,6 +26,29 @@ class AppThemeData {
   factory AppThemeData.main() => AppThemeData(
         brightness: Brightness.dark,
         colorScheme: AppColorScheme.main(),
+      );
+
+  ThemeData get materialThemeData => ThemeData(
+        primaryColor: colorScheme.primary,
+        dividerColor: colorScheme.primary,
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          brightness: Brightness.dark,
+          primary: colorScheme.primary,
+          secondary: Colors.black,
+        ),
+        // primaryTextTheme: GoogleFonts.chakraPetchTextTheme(),
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          centerTitle: true,
+          color: Colors.blue,
+          elevation: 0.0,
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.all(
+              AppThemeData.main().colorScheme.primary),
+        ),
       );
 }
 
