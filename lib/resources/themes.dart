@@ -22,8 +22,30 @@ class AppThemeData {
         textTheme: AppTextTheme.create(color: Colors.white),
       );
 
-  factory AppThemeData.light() => AppThemeData(
+  factory AppThemeData.main() => AppThemeData(
         brightness: Brightness.dark,
-        colorScheme: AppColorScheme.light(),
+        colorScheme: AppColorScheme.main(),
       );
+}
+
+class AppTheme extends InheritedWidget {
+  final AppThemeData data;
+
+  const AppTheme({
+    Key? key,
+    required this.data,
+    required Widget child,
+  }) : super(key: key, child: child);
+
+  static AppTheme of(BuildContext context) {
+    final AppTheme? result =
+        context.dependOnInheritedWidgetOfExactType<AppTheme>();
+    assert(result != null, 'No PATheme found in context');
+    return result!;
+  }
+
+  @override
+  bool updateShouldNotify(covariant AppTheme oldWidget) {
+    return data != oldWidget.data;
+  }
 }

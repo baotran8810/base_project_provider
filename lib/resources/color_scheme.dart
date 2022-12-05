@@ -5,5 +5,5 @@ class AppColorScheme {
 
   AppColorScheme({required this.primary});
 
-  factory AppColorScheme.light() => AppColorScheme(primary: Colors.white);
+  factory AppColorScheme.main() => AppColorScheme(primary: Colors.white);
 }
