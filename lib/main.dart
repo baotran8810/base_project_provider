@@ -14,7 +14,7 @@ void main() {
 }
 
 void executeMain(AppConfig appConfig) async {
-  setupLocator();
+  configureDependencies();
   runApp(
     MyApp(
       appConfig: appConfig,
